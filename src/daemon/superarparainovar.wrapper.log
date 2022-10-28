@@ -1,0 +1,42 @@
+2021-11-26 10:50:03 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\alessandrob\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file C:\Users\alessandrob\Documents\superar-server\1.0.2\superar-para-inovar-back\src\server.js --scriptoptions= --log "Superar Para Inovar wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2021-11-26 10:50:03 - Started 23120
+2022-01-12 15:07:06 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\alessandrob\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file C:\Users\alessandrob\Documents\superar-server\1.0.2\superar-para-inovar-back\src\server.js --scriptoptions= --log "Superar Para Inovar wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2022-01-12 15:07:07 - Started 708
+2022-01-12 17:45:19 - Stopping superarparainovar.exe
+2022-01-12 17:45:19 - ProcessKill 708
+2022-01-12 17:45:21 - Shutdown exception
+Message:O sistema está sendo desligado.
+
+Stacktrace:   em System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   em System.Management.ManagementScope.InitializeGuts(Object o)
+   em System.Management.ManagementScope.Initialize()
+   em System.Management.ManagementObjectSearcher.Initialize()
+   em System.Management.ManagementObjectSearcher.Get()
+   em winsw.WrapperService.GetChildPids(Int32 pid)
+   em winsw.WrapperService.StopProcessAndChildren(Int32 pid)
+   em winsw.WrapperService.StopIt()
+   em winsw.WrapperService.OnShutdown()
+2022-01-12 17:50:54 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\alessandrob\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file C:\Users\alessandrob\Documents\superar-server\1.0.2\superar-para-inovar-back\src\server.js --scriptoptions= --log "Superar Para Inovar wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2022-01-12 17:50:55 - Started 10416
+2022-07-07 10:08:41 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\alessandrob\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file C:\Users\alessandrob\Documents\superar-server\1.0.2\superar-para-inovar-back\src\server.js --scriptoptions= --log "Superar Para Inovar wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2022-07-07 10:08:42 - Started 6836
+2022-07-07 12:59:30 - Stopping superarparainovar.exe
+2022-07-07 12:59:31 - ProcessKill 6836
+2022-07-07 12:59:42 - Shutdown exception
+Message:O inicializador de tipo de 'System.Management.ManagementPath' acionou uma exceção.
+Stacktrace:   em System.Management.ManagementScope._Clone(ManagementScope scope, IdentifierChangedEventHandler handler)
+   em System.Management.ManagementObjectSearcher..ctor(ManagementScope scope, ObjectQuery query, EnumerationOptions options)
+   em winsw.WrapperService.GetChildPids(Int32 pid)
+   em winsw.WrapperService.StopProcessAndChildren(Int32 pid)
+   em winsw.WrapperService.StopIt()
+   em winsw.WrapperService.OnShutdown()
+2022-07-07 13:19:17 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\alessandrob\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file C:\Users\alessandrob\Documents\superar-server\1.0.2\superar-para-inovar-back\src\server.js --scriptoptions= --log "Superar Para Inovar wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2022-07-07 13:19:18 - Started 6464
+2022-07-07 13:46:43 - Failed to log event in Windows Event Log: Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\alessandrob\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file C:\Users\alessandrob\Documents\superar-server\1.0.2\superar-para-inovar-back\src\server.js --scriptoptions= --log "Superar Para Inovar wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined; Reason: 
+Message:Identificador inválido
+Stacktrace:   em System.Diagnostics.EventLog.InternalWriteEvent(UInt32 eventID, UInt16 category, EventLogEntryType type, String[] strings, Byte[] rawData, String currentMachineName)
+   em System.Diagnostics.EventLog.WriteEntry(String message, EventLogEntryType type, Int32 eventID, Int16 category, Byte[] rawData)
+   em System.Diagnostics.EventLog.WriteEntry(String message)
+   em winsw.WrapperService.LogEvent(String message)
+2022-07-07 13:46:43 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\alessandrob\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file C:\Users\alessandrob\Documents\superar-server\1.0.2\superar-para-inovar-back\src\server.js --scriptoptions= --log "Superar Para Inovar wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2022-07-07 13:46:43 - Started 6408
