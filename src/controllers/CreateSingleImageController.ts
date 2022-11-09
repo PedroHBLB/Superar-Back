@@ -24,7 +24,7 @@ class CreateSingleImageController {
       interno_id = (request.query as any).interno_id;
     }
 
-    const comprovante = `http://177.190.201.227:3000/cdn/${colaborador_id}/${file.filename}`;
+    const comprovante = `http://192.168.11.105:3000/cdn/${colaborador_id}/${file.filename}`;
     try {
       const saveComprovante = await createSingleImageService.execute({
         interno_id,

@@ -40,7 +40,7 @@ const bootstrap = async () => {
     "/cdn",
     //ensureAuthenticated,
     express.static(
-      "/home/participante2/SPI Integracao de Sistemas Ltda/Superar-Para-Inovar-CDN - API-Armazenamento/"
+      "C:\\Users\\pedrob\\Documents\\GitHub\\superar-server\\1.0.2\\superar-para-inovar-back\\src\\uploads"
     )
   );
   app.use("/", express.static("public"));

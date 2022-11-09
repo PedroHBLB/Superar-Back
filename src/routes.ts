@@ -53,7 +53,7 @@ const fileFilter = (req, file, cb) => {
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    let dir = `/home/participante2/SPI Integracao de Sistemas Ltda/Superar-Para-Inovar-CDN - API-Armazenamento/${req.colaborador_id}`;
+    let dir = `C:\\Users\\pedrob\\Documents\\GitHub\\superar-server\\1.0.2\\superar-para-inovar-back\\src\\uploads\\${req.colaborador_id}`;
 
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
@@ -261,21 +261,21 @@ router.put(
   updateColaboradorConhecimentoController.handle
 );
 
-// router.post(
-//   "/pilares/interno",
-//   ensureAuthenticated,
-//   createInternoController.handle
-// );
-// router.patch(
-//   "/pilares/interno/photo",
-//   ensureAuthenticated,
-//   upload.single("image"),
-//   createSingleImageController.handle
-// );
-// router.get(
-//   "/pilares/interno/:nome",
-//   ensureAuthenticated,
-//   showInternoColaboradorScoreService.handle
-// );
+router.post(
+  "/pilares/interno",
+  ensureAuthenticated,
+  createInternoController.handle
+);
+router.patch(
+  "/pilares/interno/photo",
+  ensureAuthenticated,
+  upload.single("image"),
+  createSingleImageController.handle
+);
+router.get(
+  "/pilares/interno/:nome",
+  ensureAuthenticated,
+  showInternoColaboradorScoreService.handle
+);
 
 export { router };

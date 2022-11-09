@@ -50,7 +50,7 @@ var UpdateColaboradorAvatarController = /** @class */ (function () {
                         updateColaboradorAvatarService = new UpdateColaboradorAvatarService_1.UpdateColaboradorAvatarService();
                         file = request.file;
                         colaborador_id = request.colaborador_id;
-                        avatar = "http://177.190.201.227:3000/cdn/" + colaborador_id + "/" + file.filename;
+                        avatar = "http://192.168.11.105:3000/cdn/" + colaborador_id + "/" + file.filename;
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);

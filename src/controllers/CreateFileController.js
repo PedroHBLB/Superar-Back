@@ -58,7 +58,7 @@ var CreateFileController = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        uri = "http://177.190.201.227:3000/cdn/" + colaborador_id + "/" + file.filename;
+                        uri = "http://192.168.11.105:3000/cdn/" + colaborador_id + "/" + file.filename;
                         return [4 /*yield*/, createFileService.execute({ conhecimento_id: conhecimento_id, uri: uri })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }

@@ -44,7 +44,7 @@ var ResetPasswordController_1 = require("./controllers/ResetPasswordController")
 
 var storage = multer_1.default.diskStorage({
     destination: function (req, file, cb) {
-        var dir = "/home/participante2/SPI Integracao de Sistemas Ltda/Superar-Para-Inovar-CDN - API-Armazenamento/" + req.colaborador_id;
+        var dir = "C:\\Users\\pedrob\\Documents\\GitHub\\superar-server\\1.0.2\\superar-para-inovar-back\\src\\uploads\\" + req.colaborador_id;
         if (!fs_1.default.existsSync(dir)) {
             fs_1.default.mkdirSync(dir);
         }

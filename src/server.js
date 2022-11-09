@@ -73,7 +73,7 @@ var bootstrap = function () { return __awaiter(void 0, void 0, void 0, function 
                 app.use(routes_1.router);
                 app.use("/cdn", 
                 //ensureAuthenticated,
-                express_1.default.static("/home/participante2/SPI Integracao de Sistemas Ltda/Superar-Para-Inovar-CDN - API-Armazenamento/"));
+                express_1.default.static("C:\\Users\\pedrob\\Documents\\GitHub\\superar-server\\1.0.2\\superar-para-inovar-back\\src\\uploads"));
                 app.use("/", express_1.default.static("public"));
                 app.use("/home", express_1.default.static("public"));
                 app.use("/recover", express_1.default.static("recover"));

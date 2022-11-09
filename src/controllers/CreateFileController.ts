@@ -30,7 +30,7 @@ class CreateFileController {
 
     const now = Date.now();
     const promises = files.map(async (file) => {
-      const uri = `http://177.190.201.227:3000/cdn/${colaborador_id}/${file.filename}`;
+      const uri = `http://192.168.11.105:3000/cdn/${colaborador_id}/${file.filename}`;
       return await createFileService.execute({ conhecimento_id, uri });
     });
 
