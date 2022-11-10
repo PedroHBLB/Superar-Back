@@ -19,18 +19,15 @@ class CreateInovacaoService {
 
         const pilar_id = await pilarService.execute({ colaborador_id });
 
-        const newInovacao = inovacaoRepositories.create({
+        const inovacao = inovacaoRepositories.create({
             pilar_id,
             titulo,
             descricao,
         });
 
-        try {
-            await inovacaoRepositories.save(newInovacao);
-        } catch (error) {
-            console.log(error);
-            throw new Error("Inovação não pode ser salva");
-        }
+        await inovacaoRepositories.save(inovacao);
+
+        return inovacao.id;
     }
 }
 

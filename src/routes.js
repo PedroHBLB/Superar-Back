@@ -17,6 +17,7 @@ var CreateSaudeController_1 = require("./controllers/CreateSaudeController");
 var CreateConhecimentoController_1 = require("./controllers/CreateConhecimentoController");
 var CreateInternoController_1 = require("./controllers/CreateInternoController");
 var CreateImageController_1 = require("./controllers/CreateImageController");
+var CreateInovacaoController_1 = require("./controllers/CreateInovacaoController");
 var AuthenticateColaboradorController_1 = require("./controllers/AuthenticateColaboradorController");
 var CreateSingleImageController_1 = require("./controllers/CreateSingleImageController");
 var SendColaboradorDataController_1 = require("./controllers/SendColaboradorDataController");
@@ -67,6 +68,7 @@ var createInternoController = new CreateInternoController_1.CreateInternoControl
 var createImageController = new CreateImageController_1.CreateImageController();
 var createFileController = new CreateFileController_1.CreateFileController();
 var createSingleImageController = new CreateSingleImageController_1.CreateSingleImageController();
+var createInovacaoController = new CreateInovacaoController_1.CreateInovacaoController();
 var updateColaboradorAvatarController = new UpdateColaboradorAvatarController_1.UpdateColaboradorAvatarController();
 var listAllAvailablePostsController = new ListAllAvailablePostsController_1.ListAllAvailablePostsController();
 var listAllDocumentsByIdController = new ListAllDocumentsByIdController_1.ListAllDocumentsByIdController();
@@ -121,3 +123,4 @@ router.put("/pilares/conhecimento/pendente/:pillar_id", ensureAuthenticated_1.en
 router.post("/pilares/interno", ensureAuthenticated_1.ensureAuthenticated, createInternoController.handle);
 router.patch("/pilares/interno/photo", ensureAuthenticated_1.ensureAuthenticated, upload.single("image"), createSingleImageController.handle);
 router.get("/pilares/interno/:nome", ensureAuthenticated_1.ensureAuthenticated, showInternoColaboradorScoreService.handle);
+router.post("/pilares/inovacao", ensureAuthenticated_1.ensureAuthenticated, createInovacaoController.handle);

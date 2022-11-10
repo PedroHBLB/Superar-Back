@@ -46,7 +46,7 @@ var CreateInovacaoService = /** @class */ (function () {
     CreateInovacaoService.prototype.execute = function (_a) {
         var colaborador_id = _a.colaborador_id, titulo = _a.titulo, descricao = _a.descricao;
         return __awaiter(this, void 0, void 0, function () {
-            var inovacaoRepositories, pilarService, pilar_id, newInovacao, error_1;
+            var inovacaoRepositories, pilarService, pilar_id, inovacao;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -55,23 +55,15 @@ var CreateInovacaoService = /** @class */ (function () {
                         return [4 /*yield*/, pilarService.execute({ colaborador_id: colaborador_id })];
                     case 1:
                         pilar_id = _b.sent();
-                        newInovacao = inovacaoRepositories.create({
+                        inovacao = inovacaoRepositories.create({
                             pilar_id: pilar_id,
                             titulo: titulo,
                             descricao: descricao,
                         });
-                        _b.label = 2;
+                        return [4 /*yield*/, inovacaoRepositories.save(inovacao)];
                     case 2:
-                        _b.trys.push([2, 4, , 5]);
-                        return [4 /*yield*/, inovacaoRepositories.save(newInovacao)];
-                    case 3:
                         _b.sent();
-                        return [3 /*break*/, 5];
-                    case 4:
-                        error_1 = _b.sent();
-                        console.log(error_1);
-                        throw new Error("Inovação não pode ser salva");
-                    case 5: return [2 /*return*/];
+                        return [2 /*return*/, inovacao.id];
                 }
             });
         });

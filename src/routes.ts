@@ -12,6 +12,7 @@ import { CreateSaudeController } from "./controllers/CreateSaudeController";
 import { CreateConhecimentoController } from "./controllers/CreateConhecimentoController";
 import { CreateInternoController } from "./controllers/CreateInternoController";
 import { CreateImageController } from "./controllers/CreateImageController";
+import { CreateInovacaoController } from "./controllers/CreateInovacaoController";
 import { AuthenticateColaboradorController } from "./controllers/AuthenticateColaboradorController";
 import { CreateSingleImageController } from "./controllers/CreateSingleImageController";
 import { SendColaboradorDataController } from "./controllers/SendColaboradorDataController";
@@ -84,6 +85,7 @@ const createInternoController = new CreateInternoController();
 const createImageController = new CreateImageController();
 const createFileController = new CreateFileController();
 const createSingleImageController = new CreateSingleImageController();
+const createInovacaoController = new CreateInovacaoController();
 const updateColaboradorAvatarController =
   new UpdateColaboradorAvatarController();
 const listAllAvailablePostsController = new ListAllAvailablePostsController();
@@ -180,6 +182,15 @@ router.post("/colaboradores", createColaboradorController.handle);
 router.post("/login", authenticateColaboradorController.handle);
 
 router.post("/pilares", createPilarController.handle);
+
+/*
+
+|==============================================|
+ *******************Saude**********************
+|==============================================|
+
+*/
+
 router.post(
   "/pilares/saude",
   ensureAuthenticated,
@@ -220,7 +231,13 @@ router.get(
   ensureAuthenticated,
   showAnotherSaudeColaboradorScoreController.handle
 );
-//===================================================================================
+/*
+
+|==============================================|
+ ****************Conhecimento******************
+|==============================================|
+
+*/
 router.post(
   "/pilares/conhecimento",
   ensureAuthenticated,
@@ -261,6 +278,14 @@ router.put(
   updateColaboradorConhecimentoController.handle
 );
 
+/*
+
+|==============================================|
+ ****************Interno***********************
+|==============================================|
+
+*/
+
 router.post(
   "/pilares/interno",
   ensureAuthenticated,
@@ -276,6 +301,20 @@ router.get(
   "/pilares/interno/:nome",
   ensureAuthenticated,
   showInternoColaboradorScoreService.handle
+);
+
+/*
+
+|==============================================|
+ ****************Inovacao***********************
+|==============================================|
+
+*/
+
+router.post(
+  "/pilares/inovacao",
+  ensureAuthenticated,
+  createInovacaoController.handle
 );
 
 export { router };
