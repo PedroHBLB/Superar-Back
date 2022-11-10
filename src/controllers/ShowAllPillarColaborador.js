@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ShowAllPillarColaborador = void 0;
 var ShowConhecimentoColaboradorScoreService_1 = require("../services/ShowConhecimentoColaboradorScoreService");
 var ShowInternoColaboradorScoreService_1 = require("../services/ShowInternoColaboradorScoreService");
+var ShowInovacaoColaboradorScoreService_1 = require("../services/ShowInovacaoColaboradorScoreService");
 var ShowSaudeColaboradorScoreService_1 = require("../services/ShowSaudeColaboradorScoreService");
 var ShowAllPillarColaborador = /** @class */ (function () {
     function ShowAllPillarColaborador() {
@@ -55,14 +56,15 @@ var ShowAllPillarColaborador = /** @class */ (function () {
                         showConhecimentoColaboradorScoreService = new ShowConhecimentoColaboradorScoreService_1.ShowConhecimentoColaboradorScoreService();
                         showSaudeColaboradorScoreService = new ShowSaudeColaboradorScoreService_1.ShowSaudeColaboradorScoreService();
                         showInternoColaboradorScoreService = new ShowInternoColaboradorScoreService_1.ShowInternoColaboradorScoreService();
+                        showInovacaoColaboradorScoreService = new ShowInovacaoColaboradorScoreService_1.ShowInovacaoColaboradorScoreService();
                         scores_1 = [];
                         _b = (_a = Promise).all;
                         return [4 /*yield*/, showSaudeColaboradorScoreService
-                                .execute({
+                            .execute({
                                 id: colaborador_id,
                                 month: Number(redirect_month),
                             })
-                                .then(function (_a) {
+                            .then(function (_a) {
                                 var pontuacao_do_mes = _a.pontuacao_do_mes;
                                 return scores_1.push({ pilar: "saude", pontuacao_do_mes: pontuacao_do_mes });
                             })];
@@ -71,11 +73,11 @@ var ShowAllPillarColaborador = /** @class */ (function () {
                             _d.sent()
                         ];
                         return [4 /*yield*/, showConhecimentoColaboradorScoreService
-                                .execute({
+                            .execute({
                                 id: colaborador_id,
                                 month: Number(redirect_month),
                             })
-                                .then(function (_a) {
+                            .then(function (_a) {
                                 var pontuacao_do_mes = _a.pontuacao_do_mes;
                                 return scores_1.push({ pilar: "conhecimento", pontuacao_do_mes: pontuacao_do_mes });
                             })];
@@ -84,12 +86,12 @@ var ShowAllPillarColaborador = /** @class */ (function () {
                             _d.sent()
                         ]);
                         return [4 /*yield*/, showInternoColaboradorScoreService
-                                .execute({
+                            .execute({
                                 id: colaborador_id,
                                 nome: "rsi",
                                 month: Number(redirect_month),
                             })
-                                .then(function (_a) {
+                            .then(function (_a) {
                                 var pontuacao_do_mes = _a.pontuacao_do_mes;
                                 return scores_1.push({ pilar: "rsi", pontuacao_do_mes: pontuacao_do_mes });
                             })];
@@ -98,12 +100,12 @@ var ShowAllPillarColaborador = /** @class */ (function () {
                             _d.sent()
                         ]);
                         return [4 /*yield*/, showInternoColaboradorScoreService
-                                .execute({
+                            .execute({
                                 id: colaborador_id,
                                 nome: "wtt",
                                 month: Number(redirect_month),
                             })
-                                .then(function (_a) {
+                            .then(function (_a) {
                                 var pontuacao_do_mes = _a.pontuacao_do_mes;
                                 return scores_1.push({ pilar: "wtt", pontuacao_do_mes: pontuacao_do_mes });
                             })];
@@ -112,24 +114,37 @@ var ShowAllPillarColaborador = /** @class */ (function () {
                             _d.sent()
                         ]);
                         return [4 /*yield*/, showInternoColaboradorScoreService
-                                .execute({
+                            .execute({
                                 id: colaborador_id,
                                 nome: "qualidade",
                                 month: Number(redirect_month),
                             })
-                                .then(function (_a) {
+                            .then(function (_a) {
                                 var pontuacao_do_mes = _a.pontuacao_do_mes;
                                 return scores_1.push({ pilar: "qualidade", pontuacao_do_mes: pontuacao_do_mes });
                             })];
                     case 5:
-                        _b.apply(_a, [_c.concat([
-                                _d.sent()
-                            ])]);
-                        return [2 /*return*/, response.json(scores_1)];
+                        _c = [
+                            _d.sent()
+                        ];
+                        return [4 /*yield*/, showInovacaoColaboradorScoreService
+                            .execute({
+                                id: colaborador_id,
+                                month: Number(redirect_month),
+                            })
+                            .then(function (_a) {
+                                var pontuacao_do_mes = _a.pontuacao_do_mes;
+                                return scores_1.push({ pilar: "conhecimento", pontuacao_do_mes: pontuacao_do_mes });
+                            })];
                     case 6:
+                        _b.apply(_a, [_c.concat([
+                            _d.sent()
+                        ])]);
+                        return [2 /*return*/, response.json(scores_1)];
+                    case 7:
                         error_1 = _d.sent();
                         return [2 /*return*/, response.status(404)];
-                    case 7: return [2 /*return*/];
+                    case 8: return [2 /*return*/];
                 }
             });
         });

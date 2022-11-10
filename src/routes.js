@@ -32,6 +32,7 @@ var ShowAnotherSaudeColaboradorScoreController_1 = require("./controllers/ShowAn
 var ShowConhecimentoColaboradorScoreController_1 = require("./controllers/ShowConhecimentoColaboradorScoreController");
 var ShowAnotherConhecimentoColaboradorScoreController_1 = require("./controllers/ShowAnotherConhecimentoColaboradorScoreController");
 var ShowInternoColaboradorScoreController_1 = require("./controllers/ShowInternoColaboradorScoreController");
+var ShowInovacaoColaboradorController_1 = require("./controllers/ShowInovacaoColaboradorController");
 var ShowAllPillarColaborador_1 = require("./controllers/ShowAllPillarColaborador");
 var ShowAllPillarFromAnotherColaborador_1 = require("./controllers/ShowAllPillarFromAnotherColaborador");
 var ShowColaboradorRankingController_1 = require("./controllers/ShowColaboradorRankingController");
@@ -83,6 +84,7 @@ var showAllPillarColaborador = new ShowAllPillarColaborador_1.ShowAllPillarColab
 new ShowInternoColaboradorScoreController_1.ShowInternoColaboradorScoreController();
 var showAllPillarFromAnotherColaborador = new ShowAllPillarFromAnotherColaborador_1.ShowAllPillarFromAnotherColaborador();
 var showColaboradorRankingController = new ShowColaboradorRankingController_1.ShowColaboradorRankingController();
+var showInovacaoColaboradorScoreController = new ShowInovacaoColaboradorController_1.ShowInovacaoColaboradorScoreController();
 var listAllPendenteSaudeController = new ListAllPendenteSaudeController_1.ListAllPendenteSaudeController();
 var listAllPendenteConhecimentoController = new ListAllPendenteConhecimentoController_1.ListAllPendenteConhecimentoController();
 var updateColaboradorSaudeController = new UpdateColaboradorSaudeController_1.UpdateColaboradorSaudeController();
@@ -124,3 +126,4 @@ router.post("/pilares/interno", ensureAuthenticated_1.ensureAuthenticated, creat
 router.patch("/pilares/interno/photo", ensureAuthenticated_1.ensureAuthenticated, upload.single("image"), createSingleImageController.handle);
 router.get("/pilares/interno/:nome", ensureAuthenticated_1.ensureAuthenticated, showInternoColaboradorScoreService.handle);
 router.post("/pilares/inovacao", ensureAuthenticated_1.ensureAuthenticated, createInovacaoController.handle);
+router.get("/pilares/inovacao/:nome", ensureAuthenticated_1.ensureAuthenticated, showInovacaoColaboradorScoreController.handle);

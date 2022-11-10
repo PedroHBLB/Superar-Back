@@ -27,6 +27,7 @@ import { ShowAnotherColaboradorScoreController } from "./controllers/ShowAnother
 import { ShowConhecimentoColaboradorScoreController } from "./controllers/ShowConhecimentoColaboradorScoreController";
 import { ShowAnotherConhecimentoColaboradorScoreController } from "./controllers/ShowAnotherConhecimentoColaboradorScoreController";
 import { ShowInternoColaboradorScoreController } from "./controllers/ShowInternoColaboradorScoreController";
+import { ShowInovacaoColaboradorScoreController } from "./controllers/ShowInovacaoColaboradorController";
 import { ShowAllPillarColaborador } from "./controllers/ShowAllPillarColaborador";
 import { ShowAllPillarFromAnotherColaborador } from "./controllers/ShowAllPillarFromAnotherColaborador";
 import { ShowColaboradorRankingController } from "./controllers/ShowColaboradorRankingController";
@@ -109,6 +110,7 @@ new ShowInternoColaboradorScoreController();
 const showAllPillarFromAnotherColaborador =
   new ShowAllPillarFromAnotherColaborador();
 const showColaboradorRankingController = new ShowColaboradorRankingController();
+const showInovacaoColaboradorScoreController = new ShowInovacaoColaboradorScoreController();
 const listAllPendenteSaudeController = new ListAllPendenteSaudeController();
 const listAllPendenteConhecimentoController =
   new ListAllPendenteConhecimentoController();
@@ -315,6 +317,12 @@ router.post(
   "/pilares/inovacao",
   ensureAuthenticated,
   createInovacaoController.handle
+);
+
+router.get(
+  "/pilares/inovacao/:nome",
+  ensureAuthenticated,
+  showInovacaoColaboradorScoreController.handle
 );
 
 export { router };
