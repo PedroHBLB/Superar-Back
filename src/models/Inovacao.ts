@@ -12,20 +12,20 @@ import {
   
   @Entity("inovacao")
   export class Inovacao {
-    @PrimaryColumn()
+    @PrimaryColumn("uuid")
     readonly id: string;
   
-    @Column()
+    @Column("text")
     pilar_id: string;
   
     @JoinColumn({ name: "pilar_id" })
     @OneToOne(() => Pilar)
     pilarId: Pilar;
   
-    @Column()
+    @Column("text")
     titulo: string;
   
-    @Column()
+    @Column("text")
     descricao: string;
   
     @CreateDateColumn()

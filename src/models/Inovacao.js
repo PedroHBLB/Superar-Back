@@ -17,20 +17,20 @@ var Inovacao = /** @class */ (function () {
         }
     }
     __decorate([
-        (0, typeorm_1.PrimaryColumn)()
+        (0, typeorm_1.PrimaryColumn)("uuid")
     ], Inovacao.prototype, "id", void 0);
     __decorate([
-        (0, typeorm_1.Column)()
+        (0, typeorm_1.Column)("text")
     ], Inovacao.prototype, "pilar_id", void 0);
     __decorate([
         (0, typeorm_1.JoinColumn)({ name: "pilar_id" }),
         (0, typeorm_1.OneToOne)(function () { return Pilar_1.Pilar; })
     ], Inovacao.prototype, "pilarId", void 0);
     __decorate([
-        (0, typeorm_1.Column)()
+        (0, typeorm_1.Column)("text")
     ], Inovacao.prototype, "titulo", void 0);
     __decorate([
-        (0, typeorm_1.Column)()
+        (0, typeorm_1.Column)("text")
     ], Inovacao.prototype, "descricao", void 0);
     __decorate([
         (0, typeorm_1.CreateDateColumn)()
