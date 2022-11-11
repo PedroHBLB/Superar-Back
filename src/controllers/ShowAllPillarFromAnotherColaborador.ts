@@ -66,15 +66,14 @@ class ShowAllPillarFromAnotherColaborador {
           .then(({ pontuacao_do_mes }) =>
             scores.push({ pilar: "qualidade", pontuacao_do_mes })
           ),
-          await showInovacaoColaboradorScoreService
-          .execute({
-            id,
-            nome: "conhecimento",
-            month: Number(redirect_month),
-          })
-          .then(({ pontuacao_do_mes }) =>
-            scores.push({ pilar: "conhecimento", pontuacao_do_mes })
-          ),
+        // await showInovacaoColaboradorScoreService
+        //   .execute({
+        //     id,
+        //     month: Number(redirect_month),
+        //   })
+        //   .then(({ pontuacao_do_mes }) =>
+        //     scores.push({ pilar: "conhecimento", pontuacao_do_mes })
+        //   ),
       ]).then(() => {});
 
       return response.json(scores);

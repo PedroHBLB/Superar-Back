@@ -43,7 +43,7 @@ var ShowInovacaoColaboradorScoreService = /** @class */ (function () {
     function ShowInovacaoColaboradorScoreService() {
     }
     ShowInovacaoColaboradorScoreService.prototype.execute = function (_a) {
-        var id = _a.id, nome = _a.nome, month = _a.month;
+        var id = _a.id, month = _a.month;
         return __awaiter(this, void 0, void 0, function () {
             var internoRepositories, start_date, end_date, score;
             return __generator(this, function (_b) {
@@ -56,7 +56,6 @@ var ShowInovacaoColaboradorScoreService = /** @class */ (function () {
                                 .createQueryBuilder("inovacao")
                                 .leftJoinAndSelect("inovacao.pilarId", "pilar")
                                 .where("pilar.colaborador_id = :id", { id: id })
-                                .andWhere("interno.nome = :nome", { nome: nome })
                                 .andWhere("'[".concat(start_date, ", ").concat(end_date, "]'::daterange @> pilar.created_at::date"))
                                 // .cache(`${id}Interno:${nome}_${month}`, 36000000)
                                 .select("SUM(pilar.pontuacao)", "pontuacao_do_mes")

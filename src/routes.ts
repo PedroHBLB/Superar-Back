@@ -320,7 +320,7 @@ router.post(
 );
 
 router.get(
-  "/pilares/inovacao/:nome",
+  "/pilares/inovacao/score",
   ensureAuthenticated,
   showInovacaoColaboradorScoreController.handle
 );

@@ -52,9 +52,9 @@ var CreateConhecimentoService = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        conhecimentoRepositories = typeorm_1.getCustomRepository(ConhecimentoRepositories_1.ConhecimentoRepositories);
+                        conhecimentoRepositories = (0, typeorm_1.getCustomRepository)(ConhecimentoRepositories_1.ConhecimentoRepositories);
                         pilarService = new CreatePilarService_1.CreatePilarService();
-                        connection = typeorm_1.getConnection();
+                        connection = (0, typeorm_1.getConnection)();
                         queryRunner = connection.createQueryRunner();
                         return [4 /*yield*/, queryRunner.connect()];
                     case 1:
@@ -64,7 +64,8 @@ var CreateConhecimentoService = /** @class */ (function () {
                         }
                         if (categoria !== "article" &&
                             categoria !== "book" &&
-                            categoria !== "lecture") {
+                            categoria !== "lecture" &&
+                            categoria !== "inovacao") {
                             throw new Error("Categoria não aceita");
                         }
                         return [4 /*yield*/, pilarService.execute({ colaborador_id: colaborador_id })];
@@ -95,8 +96,8 @@ var CreateConhecimentoService = /** @class */ (function () {
                         return [4 /*yield*/, queryRunner.commitTransaction()];
                     case 6:
                         _b.sent();
-                        redisCleanCache_1.redisCleanCache("conhecimentoPendentes");
-                        redisCleanCache_1.redisCleanCache(colaborador_id + "Documents");
+                        (0, redisCleanCache_1.redisCleanCache)("conhecimentoPendentes");
+                        (0, redisCleanCache_1.redisCleanCache)("".concat(colaborador_id, "Documents"));
                         return [4 /*yield*/, queryRunner.release()];
                     case 7:
                         _b.sent();

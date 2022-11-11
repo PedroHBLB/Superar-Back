@@ -126,4 +126,4 @@ router.post("/pilares/interno", ensureAuthenticated_1.ensureAuthenticated, creat
 router.patch("/pilares/interno/photo", ensureAuthenticated_1.ensureAuthenticated, upload.single("image"), createSingleImageController.handle);
 router.get("/pilares/interno/:nome", ensureAuthenticated_1.ensureAuthenticated, showInternoColaboradorScoreService.handle);
 router.post("/pilares/inovacao", ensureAuthenticated_1.ensureAuthenticated, createInovacaoController.handle);
-router.get("/pilares/inovacao/:nome", ensureAuthenticated_1.ensureAuthenticated, showInovacaoColaboradorScoreController.handle);
+router.get("/pilares/inovacao/score", ensureAuthenticated_1.ensureAuthenticated, showInovacaoColaboradorScoreController.handle);

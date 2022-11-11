@@ -50,8 +50,8 @@ var ShowColaboradorRankingService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         pilarRepositories = typeorm_1.getCustomRepository(PilarRepositories_1.PilarRepositories);
-                        start_date = "2022-" + month + "-30";
-                        end_date = "2022-" + (month + 1) + "-26";
+                        start_date = "2022-" + month + "-1";
+                        end_date = "2022-" + (month + 1) + "-1";
                         return [4 /*yield*/, pilarRepositories
                                 .createQueryBuilder("pilar")
                                 .groupBy("pilar.colaborador_id")

@@ -1,15 +1,15 @@
 import { getCustomRepository } from "typeorm";
-import { InovacaoRepositories } from "../repositories/InovacaoRepositories";
+//import { InovacaoRepositories } from "../repositories/InovacaoRepositories";
+import { ConhecimentoRepositories } from "../repositories/ConhecimentoRepositories";
 
 interface IScoreInovacaoRequest {
   id: string;
-  nome: string;
   month: number;
 }
 
 class ShowInovacaoColaboradorScoreService {
-  async execute({ id, nome,  month }: IScoreInovacaoRequest) {
-    const internoRepositories = getCustomRepository(InovacaoRepositories);
+  async execute({ id, month }: IScoreInovacaoRequest) {
+    const internoRepositories = getCustomRepository(ConhecimentoRepositories);
     //A cada ano que passar mudar o start_date e o end_date
     const start_date = `2022-${month}-1`;
     const end_date = `2022-${month + 1}-1`;
@@ -18,7 +18,6 @@ class ShowInovacaoColaboradorScoreService {
       .createQueryBuilder("inovacao")
       .leftJoinAndSelect("inovacao.pilarId", "pilar")
       .where("pilar.colaborador_id = :id", { id })
-      .andWhere("interno.nome = :nome", { nome })
       .andWhere(
         `'[${start_date}, ${end_date}]'::daterange @> pilar.created_at::date`
       )

@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ShowAllPillarFromAnotherColaborador = void 0;
 var ShowConhecimentoColaboradorScoreService_1 = require("../services/ShowConhecimentoColaboradorScoreService");
 var ShowInternoColaboradorScoreService_1 = require("../services/ShowInternoColaboradorScoreService");
+var ShowInovacaoColaboradorScoreService_1 = require("../services/ShowInovacaoColaboradorScoreService");
 var ShowSaudeColaboradorScoreService_1 = require("../services/ShowSaudeColaboradorScoreService");
 var ShowAllPillarFromAnotherColaborador = /** @class */ (function () {
     function ShowAllPillarFromAnotherColaborador() {
@@ -49,12 +50,13 @@ var ShowAllPillarFromAnotherColaborador = /** @class */ (function () {
             return __generator(this, function (_d) {
                 switch (_d.label) {
                     case 0:
-                        _d.trys.push([0, 7, , 8]);
+                        _d.trys.push([0, 6, , 7]);
                         id = request.params.id;
                         redirect_month = request.query.redirect_month;
                         showConhecimentoColaboradorScoreService = new ShowConhecimentoColaboradorScoreService_1.ShowConhecimentoColaboradorScoreService();
                         showSaudeColaboradorScoreService = new ShowSaudeColaboradorScoreService_1.ShowSaudeColaboradorScoreService();
                         showInternoColaboradorScoreService = new ShowInternoColaboradorScoreService_1.ShowInternoColaboradorScoreService();
+                        showInovacaoColaboradorScoreService = new ShowInovacaoColaboradorScoreService_1.ShowInovacaoColaboradorScoreService();
                         scores_1 = [];
                         _b = (_a = Promise).all;
                         return [4 /*yield*/, showSaudeColaboradorScoreService

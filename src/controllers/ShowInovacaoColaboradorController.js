@@ -43,21 +43,16 @@ var ShowInovacaoColaboradorScoreController = /** @class */ (function () {
     }
     ShowInovacaoColaboradorScoreController.prototype.handle = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var colaborador_id, nome, redirect_month, showInovacaoColaboradorScoreService, possible_names, score, error_1;
+            var colaborador_id, redirect_month, showInovacaoColaboradorScoreService, score, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
                         colaborador_id = request.colaborador_id;
-                        nome = request.params.nome;
                         redirect_month = request.query.redirect_month;
                         showInovacaoColaboradorScoreService = new ShowInovacaoColaboradorScoreService_1.ShowInovacaoColaboradorScoreService();
-                        possible_names = ["conhecimento"];
-                        if (!possible_names.includes(nome))
-                            return [2 /*return*/, response.status(404).json({ pilar: "pilar não existe" })];
                         return [4 /*yield*/, showInovacaoColaboradorScoreService.execute({
                                 id: colaborador_id,
-                                nome: nome,
                                 month: Number(redirect_month),
                             })];
                     case 1:

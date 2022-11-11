@@ -6,7 +6,7 @@ import { CreatePilarService } from "./CreatePilarService";
 
 interface IConhecimentoRequest {
   colaborador_id: string;
-  categoria: "article" | "book" | "lecture";
+  categoria: "article" | "book" | "lecture" | "inovacao";
   titulo: string;
   descricao: string;
 }
@@ -33,7 +33,8 @@ class CreateConhecimentoService {
     if (
       categoria !== "article" &&
       categoria !== "book" &&
-      categoria !== "lecture"
+      categoria !== "lecture" &&
+      categoria !== "inovacao"
     ) {
       throw new Error("Categoria não aceita");
     }

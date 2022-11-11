@@ -50,8 +50,8 @@ var ShowConhecimentoColaboradorScoreService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         conhecimentoRepositories = typeorm_1.getCustomRepository(ConhecimentoRepositories_1.ConhecimentoRepositories);
-                        start_date = "2022-" + month + "-30";
-                        end_date = "2022-" + (month + 1) + "-26";
+                        start_date = "2022-" + month + "-1";
+                        end_date = "2022-" + (month + 1) + "-1";
                         return [4 /*yield*/, conhecimentoRepositories
                                 .createQueryBuilder("conhecimento")
                                 .leftJoinAndSelect("conhecimento.pilarId", "pilar")
