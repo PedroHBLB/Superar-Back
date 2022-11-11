@@ -85,6 +85,19 @@ var ShowAllPillarColaborador = /** @class */ (function () {
                         _c = _c.concat([
                             _d.sent()
                         ]);
+                        return [4 /*yield*/, showInovacaoColaboradorScoreService
+                                .execute({
+                                id: colaborador_id,
+                                month: Number(redirect_month),
+                            })
+                                .then(function (_a) {
+                                var pontuacao_do_mes = _a.pontuacao_do_mes;
+                                return scores_1.push({ pilar: "inovacao", pontuacao_do_mes: pontuacao_do_mes });
+                            })];
+                    case 3:
+                        _c = _c.concat([
+                            _d.sent()
+                        ]);
                         return [4 /*yield*/, showInternoColaboradorScoreService
                                 .execute({
                                 id: colaborador_id,
@@ -95,7 +108,7 @@ var ShowAllPillarColaborador = /** @class */ (function () {
                                 var pontuacao_do_mes = _a.pontuacao_do_mes;
                                 return scores_1.push({ pilar: "rsi", pontuacao_do_mes: pontuacao_do_mes });
                             })];
-                    case 3:
+                    case 4:
                         _c = _c.concat([
                             _d.sent()
                         ]);
@@ -108,20 +121,6 @@ var ShowAllPillarColaborador = /** @class */ (function () {
                                 .then(function (_a) {
                                 var pontuacao_do_mes = _a.pontuacao_do_mes;
                                 return scores_1.push({ pilar: "wtt", pontuacao_do_mes: pontuacao_do_mes });
-                            })];
-                    case 4:
-                        _c = _c.concat([
-                            _d.sent()
-                        ]);
-                        return [4 /*yield*/, showInternoColaboradorScoreService
-                                .execute({
-                                id: colaborador_id,
-                                nome: "qualidade",
-                                month: Number(redirect_month),
-                            })
-                                .then(function (_a) {
-                                var pontuacao_do_mes = _a.pontuacao_do_mes;
-                                return scores_1.push({ pilar: "qualidade", pontuacao_do_mes: pontuacao_do_mes });
                             })];
                     case 5:
                         _b.apply(_a, [_c.concat([

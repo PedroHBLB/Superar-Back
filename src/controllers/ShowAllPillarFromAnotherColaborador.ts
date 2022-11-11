@@ -37,6 +37,14 @@ class ShowAllPillarFromAnotherColaborador {
           .then(({ pontuacao_do_mes }) =>
             scores.push({ pilar: "conhecimento", pontuacao_do_mes })
           ),
+        await showInovacaoColaboradorScoreService
+          .execute({
+            id,
+            month: Number(redirect_month),
+          })
+          .then(({ pontuacao_do_mes }) =>
+            scores.push({ pilar: "inovacao", pontuacao_do_mes })
+          ),
 
         await showInternoColaboradorScoreService
           .execute({
@@ -57,22 +65,14 @@ class ShowAllPillarFromAnotherColaborador {
           .then(({ pontuacao_do_mes }) =>
             scores.push({ pilar: "wtt", pontuacao_do_mes })
           ),
-        await showInternoColaboradorScoreService
-          .execute({
-            id,
-            nome: "qualidade",
-            month: Number(redirect_month),
-          })
-          .then(({ pontuacao_do_mes }) =>
-            scores.push({ pilar: "qualidade", pontuacao_do_mes })
-          ),
-        // await showInovacaoColaboradorScoreService
+        // await showInternoColaboradorScoreService
         //   .execute({
         //     id,
+        //     nome: "qualidade",
         //     month: Number(redirect_month),
         //   })
         //   .then(({ pontuacao_do_mes }) =>
-        //     scores.push({ pilar: "conhecimento", pontuacao_do_mes })
+        //     scores.push({ pilar: "qualidade", pontuacao_do_mes })
         //   ),
       ]).then(() => {});
 
