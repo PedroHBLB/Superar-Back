@@ -50,8 +50,8 @@ var ShowSaudeColaboradorScoreService = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         saudeRepositories = typeorm_1.getCustomRepository(SaudeRepositories_1.SaudeRepositories);
-                        start_date = "2022-" + month + "-30";
-                        end_date = "2022-" + (month + 1) + "-26";
+                        start_date = "2022-" + month + "-1";
+                        end_date = "2022-" + (month + 1) + "-1";
                         return [4 /*yield*/, saudeRepositories
                                 .createQueryBuilder("saude")
                                 .leftJoinAndSelect("saude.pilarId", "pilar")

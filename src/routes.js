@@ -22,6 +22,8 @@ var AuthenticateColaboradorController_1 = require("./controllers/AuthenticateCol
 var CreateSingleImageController_1 = require("./controllers/CreateSingleImageController");
 var SendColaboradorDataController_1 = require("./controllers/SendColaboradorDataController");
 var UpdateColaboradorAvatarController_1 = require("./controllers/UpdateColaboradorAvatarController");
+var UpdateColaboradorInovacaoController_1 = require("./controllers/UpdateColaboradorInovacaoController");
+var ListAllPendenteInovacaoController_1 = require("./controllers/ListAllPendenteInovacaoController");
 var ListAllAvailablePostsController_1 = require("./controllers/ListAllAvailablePostsController");
 var ListAllDocumentsByIdController_1 = require("./controllers/ListAllDocumentsByIdController");
 var ListAllColaboradoresPostsController_1 = require("./controllers/ListAllColaboradoresPostsController");
@@ -87,9 +89,11 @@ var showColaboradorRankingController = new ShowColaboradorRankingController_1.Sh
 var showInovacaoColaboradorScoreController = new ShowInovacaoColaboradorController_1.ShowInovacaoColaboradorScoreController();
 var listAllPendenteSaudeController = new ListAllPendenteSaudeController_1.ListAllPendenteSaudeController();
 var listAllPendenteConhecimentoController = new ListAllPendenteConhecimentoController_1.ListAllPendenteConhecimentoController();
+var listAllPendenteInovacaoController = new ListAllPendenteInovacaoController_1.ListAllPendenteInovacaoController();
 var updateColaboradorSaudeController = new UpdateColaboradorSaudeController_1.UpdateColaboradorSaudeController();
 var updateColaboradorConhecimentoController = new UpdateColaboradorConhecimentoController_1.UpdateColaboradorConhecimentoController();
 var updateColaboradorDataController = new UpdateColaboradorDataController_1.UpdateColaboradorDataController();
+var updateColaboradorInovacaoController = new UpdateColaboradorInovacaoController_1.UpdateColaboradorInovacaoController();
 var recoverPasswordController = new RecoverPasswordController_1.RecoverPasswordController();
 var resetPasswordController = new ResetPasswordController_1.ResetPasswordController();
 router.get("/ping", function (req, res) {
@@ -127,3 +131,5 @@ router.patch("/pilares/interno/photo", ensureAuthenticated_1.ensureAuthenticated
 router.get("/pilares/interno/:nome", ensureAuthenticated_1.ensureAuthenticated, showInternoColaboradorScoreService.handle);
 router.post("/pilares/inovacao", ensureAuthenticated_1.ensureAuthenticated, createInovacaoController.handle);
 router.get("/pilares/inovacao/score", ensureAuthenticated_1.ensureAuthenticated, showInovacaoColaboradorScoreController.handle);
+router.get("/pilares/inovacao/pendentes", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, ensurePagination_1.ensurePagination, listAllPendenteInovacaoController.handle);
+router.put("/pilares/inovacao/pendente/:pillar_id", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, updateColaboradorInovacaoController.handle);

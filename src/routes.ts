@@ -33,6 +33,8 @@ import { ShowAllPillarFromAnotherColaborador } from "./controllers/ShowAllPillar
 import { ShowColaboradorRankingController } from "./controllers/ShowColaboradorRankingController";
 import { ListAllPendenteSaudeController } from "./controllers/ListAllPendenteSaudeController";
 import { ListAllPendenteConhecimentoController } from "./controllers/ListAllPendenteConhecimentoController";
+import { ListAllPendenteInovacaoController } from "./controllers/ListAllPendenteInovacaoController";
+import { UpdateColaboradorInovacaoController } from "./controllers/UpdateColaboradorInovacaoController";
 import { UpdateColaboradorSaudeController } from "./controllers/UpdateColaboradorSaudeController";
 import { UpdateColaboradorConhecimentoController } from "./controllers/UpdateColaboradorConhecimentoController";
 import { UpdateColaboradorDataController } from "./controllers/UpdateColaboradorDataController";
@@ -55,7 +57,7 @@ const fileFilter = (req, file, cb) => {
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    let dir = `C:\\Users\\pedrob\\Documents\\GitHub\\superar-server\\1.0.2\\superar-para-inovar-back\\src\\uploads\\${req.colaborador_id}`;
+    let dir = `./uploads/${req.colaborador_id}`;
 
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
@@ -89,8 +91,11 @@ const createSingleImageController = new CreateSingleImageController();
 const createInovacaoController = new CreateInovacaoController();
 const updateColaboradorAvatarController =
   new UpdateColaboradorAvatarController();
+const updateColaboradorInovacaoController = 
+  new UpdateColaboradorInovacaoController();
 const listAllAvailablePostsController = new ListAllAvailablePostsController();
 const listAllDocumentsByIdController = new ListAllDocumentsByIdController();
+const listAllPendenteInovacaoController = new ListAllPendenteInovacaoController();
 const listAllColaboradoresPostsController =
   new ListAllColaboradoresPostsController();
 const listColaboradoresScoresController =
@@ -323,6 +328,19 @@ router.get(
   "/pilares/inovacao/score",
   ensureAuthenticated,
   showInovacaoColaboradorScoreController.handle
+);
+router.get(
+  "/pilares/inovacao/pendentes",
+  ensureAuthenticated,
+  ensureAdmin,
+  ensurePagination,
+  listAllPendenteInovacaoController.handle
+);
+router.put(
+  "/pilares/inovacao/pendente/:pillar_id",
+  ensureAuthenticated,
+  ensureAdmin,
+  updateColaboradorInovacaoController.handle
 );
 
 export { router };

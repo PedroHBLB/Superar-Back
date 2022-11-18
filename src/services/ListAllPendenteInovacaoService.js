@@ -36,40 +36,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ShowInovacaoColaboradorScoreService = void 0;
+exports.ListAllPendenteInovacaoService = void 0;
+var class_transformer_1 = require("class-transformer");
 var typeorm_1 = require("typeorm");
-//import { InovacaoRepositories } from "../repositories/InovacaoRepositories";
 var InovacaoRepositories_1 = require("../repositories/InovacaoRepositories");
-var ShowInovacaoColaboradorScoreService = /** @class */ (function () {
-    function ShowInovacaoColaboradorScoreService() {
+var ListAllPendenteInovacaoService = /** @class */ (function () {
+    function ListAllPendenteInovacaoService() {
     }
-    ShowInovacaoColaboradorScoreService.prototype.execute = function (_a) {
-        var id = _a.id, month = _a.month;
+    ListAllPendenteInovacaoService.prototype.execute = function (_a) {
+        var start = _a.start, limit = _a.limit;
         return __awaiter(this, void 0, void 0, function () {
-            var inovacaoRepositories, start_date, end_date, score;
+            var inovacaoRepositories, pendentes;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         inovacaoRepositories = (0, typeorm_1.getCustomRepository)(InovacaoRepositories_1.InovacaoRepositories);
-                        start_date = "2022-".concat(month, "-1");
-                        end_date = "2022-".concat(month + 1, "-1");
                         return [4 /*yield*/, inovacaoRepositories
                                 .createQueryBuilder("inovacao")
                                 .leftJoinAndSelect("inovacao.pilarId", "pilar")
-                                .where("pilar.colaborador_id = :id", { id: id })
-                                .andWhere("'[".concat(start_date, ", ").concat(end_date, "]'::daterange @> pilar.created_at::date"))
-                                // .cache(`${id}Interno:${nome}_${month}`, 36000000)
-                                .select("SUM(pilar.pontuacao)", "pontuacao_do_mes")
-                                .getRawOne()];
+                                .leftJoinAndSelect("pilar.colaboradorId", "colaborador")
+                                .where("pilar.status = :status", { status: "pendente" })
+                                .orderBy("pilar.created_at", "ASC")
+                                //.leftJoinAndSelect("conhecimento.files", "files")
+                                .skip(start)
+                                .take(limit)
+                                // .cache(`conhecimentoPendentes:${start}_${limit}`, 3600000)
+                                .getMany()];
                     case 1:
-                        score = _b.sent();
-                        if (score.pontuacao_do_mes === null)
-                            score.pontuacao_do_mes = 0;
-                        return [2 /*return*/, score];
+                        pendentes = _b.sent();
+                        return [2 /*return*/, (0, class_transformer_1.classToPlain)(pendentes)];
                 }
             });
         });
     };
-    return ShowInovacaoColaboradorScoreService;
+    return ListAllPendenteInovacaoService;
 }());
-exports.ShowInovacaoColaboradorScoreService = ShowInovacaoColaboradorScoreService;
+exports.ListAllPendenteInovacaoService = ListAllPendenteInovacaoService;

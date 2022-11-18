@@ -36,40 +36,36 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ShowInovacaoColaboradorScoreService = void 0;
-var typeorm_1 = require("typeorm");
-//import { InovacaoRepositories } from "../repositories/InovacaoRepositories";
-var InovacaoRepositories_1 = require("../repositories/InovacaoRepositories");
-var ShowInovacaoColaboradorScoreService = /** @class */ (function () {
-    function ShowInovacaoColaboradorScoreService() {
+exports.UpdateColaboradorInovacaoController = void 0;
+var UpdateColaboradorInovacaoService_1 = require("../services/UpdateColaboradorInovacaoService");
+var UpdateColaboradorInovacaoController = /** @class */ (function () {
+    function UpdateColaboradorInovacaoController() {
     }
-    ShowInovacaoColaboradorScoreService.prototype.execute = function (_a) {
-        var id = _a.id, month = _a.month;
+    UpdateColaboradorInovacaoController.prototype.handle = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var inovacaoRepositories, start_date, end_date, score;
+            var colaborador_id, _a, status, categoria, pontuacao, justificativa, pillar_id, updateColaboradorInovacaoService, pilar;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        inovacaoRepositories = (0, typeorm_1.getCustomRepository)(InovacaoRepositories_1.InovacaoRepositories);
-                        start_date = "2022-".concat(month, "-1");
-                        end_date = "2022-".concat(month + 1, "-1");
-                        return [4 /*yield*/, inovacaoRepositories
-                                .createQueryBuilder("inovacao")
-                                .leftJoinAndSelect("inovacao.pilarId", "pilar")
-                                .where("pilar.colaborador_id = :id", { id: id })
-                                .andWhere("'[".concat(start_date, ", ").concat(end_date, "]'::daterange @> pilar.created_at::date"))
-                                // .cache(`${id}Interno:${nome}_${month}`, 36000000)
-                                .select("SUM(pilar.pontuacao)", "pontuacao_do_mes")
-                                .getRawOne()];
+                        colaborador_id = request.colaborador_id;
+                        _a = request.body, status = _a.status, categoria = _a.categoria, pontuacao = _a.pontuacao, justificativa = _a.justificativa;
+                        pillar_id = request.params.pillar_id;
+                        updateColaboradorInovacaoService = new UpdateColaboradorInovacaoService_1.UpdateColaboradorInovacaoService();
+                        return [4 /*yield*/, updateColaboradorInovacaoService.execute({
+                                pillar_id: pillar_id,
+                                status: status,
+                                categoria: categoria,
+                                pontuacao: pontuacao,
+                                justificativa: justificativa,
+                                colaborador_id: colaborador_id,
+                            })];
                     case 1:
-                        score = _b.sent();
-                        if (score.pontuacao_do_mes === null)
-                            score.pontuacao_do_mes = 0;
-                        return [2 /*return*/, score];
+                        pilar = _b.sent();
+                        return [2 /*return*/, response.status(201).json(pilar)];
                 }
             });
         });
     };
-    return ShowInovacaoColaboradorScoreService;
+    return UpdateColaboradorInovacaoController;
 }());
-exports.ShowInovacaoColaboradorScoreService = ShowInovacaoColaboradorScoreService;
+exports.UpdateColaboradorInovacaoController = UpdateColaboradorInovacaoController;

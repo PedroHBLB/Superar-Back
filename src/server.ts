@@ -40,7 +40,7 @@ const bootstrap = async () => {
     "/cdn",
     //ensureAuthenticated,
     express.static(
-      "C:\\Users\\pedrob\\Documents\\GitHub\\superar-server\\1.0.2\\superar-para-inovar-back\\src\\uploads"
+      "./uploads/"
     )
   );
   app.use("/", express.static("public"));
