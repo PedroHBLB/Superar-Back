@@ -53,7 +53,7 @@ $(document).ready(function () {
       $(".loading-icon").removeClass("hide");
       $(".form-submit").attr("disabled", true);
       $(".button-text").text("Salvando...");
-      $.post(`http://192.168.10.16:3000/colaborador/${s_token}`, newPassword)
+      $.post(`http://192.168.11.105:3000/colaborador/${s_token}`, newPassword)
         .done(function (data) {
           alert("Senha alterada com sucesso!");
           $(".password-input").val("");
