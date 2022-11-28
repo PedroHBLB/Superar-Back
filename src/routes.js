@@ -26,6 +26,7 @@ var UpdateColaboradorInovacaoController_1 = require("./controllers/UpdateColabor
 var ListAllPendenteInovacaoController_1 = require("./controllers/ListAllPendenteInovacaoController");
 var ListAllAvailablePostsController_1 = require("./controllers/ListAllAvailablePostsController");
 var ListAllDocumentsByIdController_1 = require("./controllers/ListAllDocumentsByIdController");
+var ListAllPendenteInternoController_1 = require("./controllers/ListAllPendenteInternoController");
 var ListAllColaboradoresPostsController_1 = require("./controllers/ListAllColaboradoresPostsController");
 var ListColaboradoresScoresController_1 = require("./controllers/ListColaboradoresScoresController");
 var CreateFileController_1 = require("./controllers/CreateFileController");
@@ -42,6 +43,7 @@ var ListAllPendenteSaudeController_1 = require("./controllers/ListAllPendenteSau
 var ListAllPendenteConhecimentoController_1 = require("./controllers/ListAllPendenteConhecimentoController");
 var UpdateColaboradorSaudeController_1 = require("./controllers/UpdateColaboradorSaudeController");
 var UpdateColaboradorConhecimentoController_1 = require("./controllers/UpdateColaboradorConhecimentoController");
+var UpdateColaboradorInternoController_1 = require("./controllers/UpdateColaboradorInternoController");
 var UpdateColaboradorDataController_1 = require("./controllers/UpdateColaboradorDataController");
 var RecoverPasswordController_1 = require("./controllers/RecoverPasswordController");
 var ResetPasswordController_1 = require("./controllers/ResetPasswordController");
@@ -77,13 +79,13 @@ var listAllAvailablePostsController = new ListAllAvailablePostsController_1.List
 var listAllDocumentsByIdController = new ListAllDocumentsByIdController_1.ListAllDocumentsByIdController();
 var listAllColaboradoresPostsController = new ListAllColaboradoresPostsController_1.ListAllColaboradoresPostsController();
 var listColaboradoresScoresController = new ListColaboradoresScoresController_1.ListColaboradoresScoresController();
+var listAllPendenteInternoController = new ListAllPendenteInternoController_1.ListAllPendenteInternoController();
 var showSaudeColaboradorScoreController = new ShowSaudeColaboradorScoreController_1.ShowSaudeColaboradorScoreController();
 var showAnotherSaudeColaboradorScoreController = new ShowAnotherSaudeColaboradorScoreController_1.ShowAnotherColaboradorScoreController();
 var showConhecimentoColaboradorScoreController = new ShowConhecimentoColaboradorScoreController_1.ShowConhecimentoColaboradorScoreController();
 var showAnotherConhecimentoColaboradorScoreController = new ShowAnotherConhecimentoColaboradorScoreController_1.ShowAnotherConhecimentoColaboradorScoreController();
-var showInternoColaboradorScoreService = new ShowInternoColaboradorScoreController_1.ShowInternoColaboradorScoreController();
+var showInternoColaboradorScoreController = new ShowInternoColaboradorScoreController_1.ShowInternoColaboradorScoreController();
 var showAllPillarColaborador = new ShowAllPillarColaborador_1.ShowAllPillarColaborador();
-new ShowInternoColaboradorScoreController_1.ShowInternoColaboradorScoreController();
 var showAllPillarFromAnotherColaborador = new ShowAllPillarFromAnotherColaborador_1.ShowAllPillarFromAnotherColaborador();
 var showColaboradorRankingController = new ShowColaboradorRankingController_1.ShowColaboradorRankingController();
 var showInovacaoColaboradorScoreController = new ShowInovacaoColaboradorController_1.ShowInovacaoColaboradorScoreController();
@@ -94,6 +96,7 @@ var updateColaboradorSaudeController = new UpdateColaboradorSaudeController_1.Up
 var updateColaboradorConhecimentoController = new UpdateColaboradorConhecimentoController_1.UpdateColaboradorConhecimentoController();
 var updateColaboradorDataController = new UpdateColaboradorDataController_1.UpdateColaboradorDataController();
 var updateColaboradorInovacaoController = new UpdateColaboradorInovacaoController_1.UpdateColaboradorInovacaoController();
+var updateColaboradorInternoController = new UpdateColaboradorInternoController_1.UpdateColaboradorInternoController();
 var recoverPasswordController = new RecoverPasswordController_1.RecoverPasswordController();
 var resetPasswordController = new ResetPasswordController_1.ResetPasswordController();
 router.get("/ping", function (req, res) {
@@ -128,7 +131,9 @@ router.get("/pilares/conhecimento/pendentes", ensureAuthenticated_1.ensureAuthen
 router.put("/pilares/conhecimento/pendente/:pillar_id", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, updateColaboradorConhecimentoController.handle);
 router.post("/pilares/interno", ensureAuthenticated_1.ensureAuthenticated, createInternoController.handle);
 router.patch("/pilares/interno/photo", ensureAuthenticated_1.ensureAuthenticated, upload.single("image"), createSingleImageController.handle);
-router.get("/pilares/interno/:nome", ensureAuthenticated_1.ensureAuthenticated, showInternoColaboradorScoreService.handle);
+router.get("/pilares/interno/:nome", ensureAuthenticated_1.ensureAuthenticated, showInternoColaboradorScoreController.handle);
+// router.get("/pilares/interno/pendentes", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, ensurePagination_1.ensurePagination, listAllPendenteInternoController.handle);
+// router.put("/pilares/interno/pendente/:pillar_id", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, updateColaboradorInternoController.handle);
 router.post("/pilares/inovacao", ensureAuthenticated_1.ensureAuthenticated, createInovacaoController.handle);
 router.get("/pilares/inovacao/score", ensureAuthenticated_1.ensureAuthenticated, showInovacaoColaboradorScoreController.handle);
 router.get("/pilares/inovacao/pendentes", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, ensurePagination_1.ensurePagination, listAllPendenteInovacaoController.handle);

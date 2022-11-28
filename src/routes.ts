@@ -17,6 +17,7 @@ import { AuthenticateColaboradorController } from "./controllers/AuthenticateCol
 import { CreateSingleImageController } from "./controllers/CreateSingleImageController";
 import { SendColaboradorDataController } from "./controllers/SendColaboradorDataController";
 import { UpdateColaboradorAvatarController } from "./controllers/UpdateColaboradorAvatarController";
+import { ListAllPendenteInternoController } from "./controllers/ListAllPendenteInternoController";
 import { ListAllAvailablePostsController } from "./controllers/ListAllAvailablePostsController";
 import { ListAllDocumentsByIdController } from "./controllers/ListAllDocumentsByIdController";
 import { ListAllColaboradoresPostsController } from "./controllers/ListAllColaboradoresPostsController";
@@ -38,6 +39,7 @@ import { UpdateColaboradorInovacaoController } from "./controllers/UpdateColabor
 import { UpdateColaboradorSaudeController } from "./controllers/UpdateColaboradorSaudeController";
 import { UpdateColaboradorConhecimentoController } from "./controllers/UpdateColaboradorConhecimentoController";
 import { UpdateColaboradorDataController } from "./controllers/UpdateColaboradorDataController";
+import { UpdateColaboradorInternoController } from "./controllers/UpdateColaboradorInternoController";
 import { RecoverPasswordController } from "./controllers/RecoverPasswordController";
 import { ResetPasswordController } from "./controllers/ResetPasswordController";
 
@@ -98,6 +100,8 @@ const listAllDocumentsByIdController = new ListAllDocumentsByIdController();
 const listAllPendenteInovacaoController = new ListAllPendenteInovacaoController();
 const listAllColaboradoresPostsController =
   new ListAllColaboradoresPostsController();
+const listAllPendenteInternoController =
+  new ListAllPendenteInternoController();
 const listColaboradoresScoresController =
   new ListColaboradoresScoresController();
 const showSaudeColaboradorScoreController =
@@ -108,10 +112,10 @@ const showConhecimentoColaboradorScoreController =
   new ShowConhecimentoColaboradorScoreController();
 const showAnotherConhecimentoColaboradorScoreController =
   new ShowAnotherConhecimentoColaboradorScoreController();
-const showInternoColaboradorScoreService =
+const showInternoColaboradorScoreController =
   new ShowInternoColaboradorScoreController();
-const showAllPillarColaborador = new ShowAllPillarColaborador();
-new ShowInternoColaboradorScoreController();
+const showAllPillarColaborador = 
+  new ShowAllPillarColaborador();
 const showAllPillarFromAnotherColaborador =
   new ShowAllPillarFromAnotherColaborador();
 const showColaboradorRankingController = new ShowColaboradorRankingController();
@@ -119,7 +123,8 @@ const showInovacaoColaboradorScoreController = new ShowInovacaoColaboradorScoreC
 const listAllPendenteSaudeController = new ListAllPendenteSaudeController();
 const listAllPendenteConhecimentoController =
   new ListAllPendenteConhecimentoController();
-
+const updateColaboradorInternoController =
+  new UpdateColaboradorInternoController();
 const updateColaboradorSaudeController = new UpdateColaboradorSaudeController();
 const updateColaboradorConhecimentoController =
   new UpdateColaboradorConhecimentoController();
@@ -307,7 +312,20 @@ router.patch(
 router.get(
   "/pilares/interno/:nome",
   ensureAuthenticated,
-  showInternoColaboradorScoreService.handle
+  showInternoColaboradorScoreController.handle
+);
+router.get(
+  "/pilares/interno/pendentes",
+  ensureAuthenticated,
+  ensureAdmin,
+  ensurePagination,
+  listAllPendenteInternoController.handle
+);
+router.put(
+  "/pilares/interno/pendente/:pillar_id",
+  ensureAuthenticated,
+  ensureAdmin,
+  updateColaboradorInternoController.handle
 );
 
 /*
