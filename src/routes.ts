@@ -42,6 +42,7 @@ import { UpdateColaboradorDataController } from "./controllers/UpdateColaborador
 import { UpdateColaboradorInternoController } from "./controllers/UpdateColaboradorInternoController";
 import { RecoverPasswordController } from "./controllers/RecoverPasswordController";
 import { ResetPasswordController } from "./controllers/ResetPasswordController";
+import { GetAboutController } from "./controllers/GetAboutController";
 
 // const fileFilter = (req, res, cb) => {
 //   if(req.mimetype !== `image/jpeg` && req.mimetype !== `image/png` && req.mimetype !== `image/jpg`){
@@ -132,6 +133,8 @@ const updateColaboradorDataController = new UpdateColaboradorDataController();
 
 const recoverPasswordController = new RecoverPasswordController();
 const resetPasswordController = new ResetPasswordController();
+
+const getAboutController = new GetAboutController();
 
 router.get("/ping", (req, res) => {
   res.send("pong");
@@ -360,5 +363,10 @@ router.put(
   ensureAdmin,
   updateColaboradorInovacaoController.handle
 );
+
+router.get(
+  "/about/",
+  getAboutController.handle
+)
 
 export { router };

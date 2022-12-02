@@ -47,6 +47,7 @@ var UpdateColaboradorInternoController_1 = require("./controllers/UpdateColabora
 var UpdateColaboradorDataController_1 = require("./controllers/UpdateColaboradorDataController");
 var RecoverPasswordController_1 = require("./controllers/RecoverPasswordController");
 var ResetPasswordController_1 = require("./controllers/ResetPasswordController");
+var GetAboutController_1 = require("./controllers/GetAboutController");
 
 var storage = multer_1.default.diskStorage({
     destination: function (req, file, cb) {
@@ -99,6 +100,7 @@ var updateColaboradorInovacaoController = new UpdateColaboradorInovacaoControlle
 var updateColaboradorInternoController = new UpdateColaboradorInternoController_1.UpdateColaboradorInternoController();
 var recoverPasswordController = new RecoverPasswordController_1.RecoverPasswordController();
 var resetPasswordController = new ResetPasswordController_1.ResetPasswordController();
+var getAboutController = new GetAboutController_1.GetAboutController();
 router.get("/ping", function (req, res) {
     res.send("pong");
 });
@@ -138,3 +140,4 @@ router.post("/pilares/inovacao", ensureAuthenticated_1.ensureAuthenticated, crea
 router.get("/pilares/inovacao/score", ensureAuthenticated_1.ensureAuthenticated, showInovacaoColaboradorScoreController.handle);
 router.get("/pilares/inovacao/pendentes", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, ensurePagination_1.ensurePagination, listAllPendenteInovacaoController.handle);
 router.put("/pilares/inovacao/pendente/:pillar_id", ensureAuthenticated_1.ensureAuthenticated, ensureAdmin_1.ensureAdmin, updateColaboradorInovacaoController.handle);
+router.get("/about/", getAboutController.handle);
