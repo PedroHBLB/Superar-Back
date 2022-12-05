@@ -24,7 +24,31 @@ var About = /** @class */ (function () {
     ], About.prototype, "name", void 0);
     __decorate([
         (0, typeorm_1.Column)("text")
-    ], About.prototype, "about", void 0);
+    ], About.prototype, "sobre", void 0);
+    __decorate([
+        (0, typeorm_1.Column)("text")
+    ], About.prototype, "conhecimento", void 0);
+    __decorate([
+        (0, typeorm_1.Column)("text")
+    ], About.prototype, "saude", void 0);
+    __decorate([
+        (0, typeorm_1.Column)("text")
+    ], About.prototype, "qualidade", void 0);
+    __decorate([
+        (0, typeorm_1.Column)("text")
+    ], About.prototype, "wtt", void 0);
+    __decorate([
+        (0, typeorm_1.Column)("text")
+    ], About.prototype, "rsi", void 0);
+    __decorate([
+        (0, typeorm_1.Column)("text")
+    ], About.prototype, "premiacao", void 0);
+    __decorate([
+        (0, typeorm_1.Column)("text")
+    ], About.prototype, "bonus", void 0);
+    __decorate([
+        (0, typeorm_1.Column)("text")
+    ], About.prototype, "duvidas", void 0);
     __decorate([
         (0, class_transformer_1.Exclude)(),
         (0, typeorm_1.CreateDateColumn)()

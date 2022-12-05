@@ -20,7 +20,31 @@ export class About {
     name: string;
 
     @Column("text")
-    about: string;
+    sobre: string;
+
+    @Column("text")
+    conhecimento: string;
+
+    @Column("text")
+    saude: string;
+
+    @Column("text")
+    qualidade: string;
+
+    @Column("text")
+    wtt: string;
+
+    @Column("text")
+    rsi: string;
+
+    @Column("text")
+    premiacao: string;
+
+    @Column("text")
+    bonus: string;
+
+    @Column("text")
+    duvidas: string;
 
     @Exclude()
     @CreateDateColumn()
