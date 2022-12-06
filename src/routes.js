@@ -48,6 +48,8 @@ var UpdateColaboradorDataController_1 = require("./controllers/UpdateColaborador
 var RecoverPasswordController_1 = require("./controllers/RecoverPasswordController");
 var ResetPasswordController_1 = require("./controllers/ResetPasswordController");
 var GetAboutController_1 = require("./controllers/GetAboutController");
+var ShowColaboradorDataController_1 = require("./controllers/ShowColaboradorDataController");
+var DeleteColaboradorDataController_1 = require("./controllers/DeleteColaboradorDataController");
 
 var storage = multer_1.default.diskStorage({
     destination: function (req, file, cb) {
@@ -101,10 +103,14 @@ var updateColaboradorInternoController = new UpdateColaboradorInternoController_
 var recoverPasswordController = new RecoverPasswordController_1.RecoverPasswordController();
 var resetPasswordController = new ResetPasswordController_1.ResetPasswordController();
 var getAboutController = new GetAboutController_1.GetAboutController();
+var showColaboradorDataController = new ShowColaboradorDataController_1.ShowColaboradorDataController();
+var deleteColaboradorDataController = new DeleteColaboradorDataController_1.DeleteColaboradorDataController();
 router.get("/ping", function (req, res) {
     res.send("pong");
 });
 router.get("/colaborador", ensureAuthenticated_1.ensureAuthenticated, sendColaboradorDataController.handle);
+router.get("/colaborador/screen", showColaboradorDataController.handle);
+router.delete("/colaborador/delete", deleteColaboradorDataController.handle);
 router.put("/colaborador", ensureAuthenticated_1.ensureAuthenticated, updateColaboradorDataController.handle);
 router.post("/colaborador/password", recoverPasswordController.handle);
 router.post("/colaborador/:secret_key", ensureAuthenticated_1.ensureAuthenticated, resetPasswordController.handle);

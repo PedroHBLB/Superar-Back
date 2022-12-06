@@ -43,6 +43,8 @@ import { UpdateColaboradorInternoController } from "./controllers/UpdateColabora
 import { RecoverPasswordController } from "./controllers/RecoverPasswordController";
 import { ResetPasswordController } from "./controllers/ResetPasswordController";
 import { GetAboutController } from "./controllers/GetAboutController";
+import { ShowColaboradorDataController } from "./controllers/ShowColaboradorDataController";
+import { DeleteColaboradorDataController } from "./controllers/DeleteColaboradorDataController";
 
 // const fileFilter = (req, res, cb) => {
 //   if(req.mimetype !== `image/jpeg` && req.mimetype !== `image/png` && req.mimetype !== `image/jpg`){
@@ -117,6 +119,8 @@ const showInternoColaboradorScoreController =
   new ShowInternoColaboradorScoreController();
 const showAllPillarColaborador = 
   new ShowAllPillarColaborador();
+const showColaboradorDataController =
+  new ShowColaboradorDataController();
 const showAllPillarFromAnotherColaborador =
   new ShowAllPillarFromAnotherColaborador();
 const showColaboradorRankingController = new ShowColaboradorRankingController();
@@ -136,6 +140,8 @@ const resetPasswordController = new ResetPasswordController();
 
 const getAboutController = new GetAboutController();
 
+const deleteColaboradorDataController = new DeleteColaboradorDataController();
+
 router.get("/ping", (req, res) => {
   res.send("pong");
 });
@@ -144,6 +150,17 @@ router.get(
   ensureAuthenticated,
   sendColaboradorDataController.handle
 );
+
+router.get(
+  "/colaborador/screen",
+  showColaboradorDataController.handle
+);
+
+router.delete(
+  "/colaborador/delete",
+  deleteColaboradorDataController.handle
+);
+
 router.put(
   "/colaborador",
   ensureAuthenticated,
