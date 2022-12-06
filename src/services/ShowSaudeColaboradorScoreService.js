@@ -45,18 +45,24 @@ var ShowSaudeColaboradorScoreService = /** @class */ (function () {
     ShowSaudeColaboradorScoreService.prototype.execute = function (_a) {
         var id = _a.id, month = _a.month;
         return __awaiter(this, void 0, void 0, function () {
-            var saudeRepositories, start_date, end_date, score;
+            var saudeRepositories, dataAtual, anoAtual, mesSeguinte, start_date, end_date, score;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        saudeRepositories = typeorm_1.getCustomRepository(SaudeRepositories_1.SaudeRepositories);
-                        start_date = "2022-" + month + "-1";
-                        end_date = "2022-" + (month + 1) + "-1";
+                        saudeRepositories = (0, typeorm_1.getCustomRepository)(SaudeRepositories_1.SaudeRepositories);
+                        dataAtual = new Date();
+                        anoAtual = dataAtual.getFullYear();
+                        mesSeguinte = month + 1;
+                        if (month === 12) {
+                            mesSeguinte = 1;
+                        }
+                        start_date = "".concat(anoAtual, "-").concat(month, "-1");
+                        end_date = "".concat(mesSeguinte === 1 ? anoAtual + 1 : anoAtual, "-").concat(mesSeguinte, "-1");
                         return [4 /*yield*/, saudeRepositories
                                 .createQueryBuilder("saude")
                                 .leftJoinAndSelect("saude.pilarId", "pilar")
                                 .where("pilar.colaborador_id = :id", { id: id })
-                                .andWhere("'[" + start_date + ", " + end_date + "]'::daterange @> pilar.created_at::date")
+                                .andWhere("'[".concat(start_date, ", ").concat(end_date, "]'::daterange @> pilar.created_at::date"))
                                 // .cache(`${id}Saude:${month}`, 3600000)
                                 .select("SUM(pilar.pontuacao)", "pontuacao_do_mes")
                                 .getRawOne()];

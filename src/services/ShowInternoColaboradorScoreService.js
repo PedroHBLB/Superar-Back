@@ -45,19 +45,25 @@ var ShowInternoColaboradorScoreService = /** @class */ (function () {
     ShowInternoColaboradorScoreService.prototype.execute = function (_a) {
         var id = _a.id, nome = _a.nome, month = _a.month;
         return __awaiter(this, void 0, void 0, function () {
-            var internoRepositories, start_date, end_date, score;
+            var internoRepositories, dataAtual, anoAtual, mesSeguinte, start_date, end_date, score;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        internoRepositories = typeorm_1.getCustomRepository(InternoRepositories_1.InternoRepositories);
-                        start_date = "2022-" + month + "-1";
-                        end_date = "2022-" + (month + 1) + "-1";
+                        internoRepositories = (0, typeorm_1.getCustomRepository)(InternoRepositories_1.InternoRepositories);
+                        dataAtual = new Date();
+                        anoAtual = dataAtual.getFullYear();
+                        mesSeguinte = month + 1;
+                        if (month === 12) {
+                            mesSeguinte = 1;
+                        }
+                        start_date = "".concat(anoAtual, "-").concat(month, "-1");
+                        end_date = "".concat(mesSeguinte === 1 ? anoAtual + 1 : anoAtual, "-").concat(mesSeguinte, "-1");
                         return [4 /*yield*/, internoRepositories
                                 .createQueryBuilder("interno")
                                 .leftJoinAndSelect("interno.pilarId", "pilar")
                                 .where("pilar.colaborador_id = :id", { id: id })
                                 .andWhere("interno.nome = :nome", { nome: nome })
-                                .andWhere("'[" + start_date + ", " + end_date + "]'::daterange @> pilar.created_at::date")
+                                .andWhere("'[".concat(start_date, ", ").concat(end_date, "]'::daterange @> pilar.created_at::date"))
                                 // .cache(`${id}Interno:${nome}_${month}`, 36000000)
                                 .select("SUM(pilar.pontuacao)", "pontuacao_do_mes")
                                 .getRawOne()];

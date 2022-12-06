@@ -45,17 +45,23 @@ var ShowColaboradorRankingService = /** @class */ (function () {
     ShowColaboradorRankingService.prototype.execute = function (_a) {
         var id = _a.id, month = _a.month;
         return __awaiter(this, void 0, void 0, function () {
-            var pilarRepositories, start_date, end_date, ranking, rankingPosition;
+            var pilarRepositories, dataAtual, anoAtual, mesSeguinte, start_date, end_date, ranking, rankingPosition;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        pilarRepositories = typeorm_1.getCustomRepository(PilarRepositories_1.PilarRepositories);
-                        start_date = "2022-" + month + "-1";
-                        end_date = "2022-" + (month + 1) + "-1";
+                        pilarRepositories = (0, typeorm_1.getCustomRepository)(PilarRepositories_1.PilarRepositories);
+                        dataAtual = new Date();
+                        anoAtual = dataAtual.getFullYear();
+                        mesSeguinte = month + 1;
+                        if (month === 12) {
+                            mesSeguinte = 1;
+                        }
+                        start_date = "".concat(anoAtual, "-").concat(month, "-1");
+                        end_date = "".concat(mesSeguinte === 1 ? anoAtual + 1 : anoAtual, "-").concat(mesSeguinte, "-1");
                         return [4 /*yield*/, pilarRepositories
                                 .createQueryBuilder("pilar")
                                 .groupBy("pilar.colaborador_id")
-                                .where("'[" + start_date + ", " + end_date + "]'::daterange @> pilar.created_at::date")
+                                .where("'[".concat(start_date, ", ").concat(end_date, "]'::daterange @> pilar.created_at::date"))
                                 .select(["SUM(pilar.pontuacao)", "pilar.colaborador_id"])
                                 .orderBy("sum", "DESC")
                                 // .cache(`${id}Ranking:all_${month}`, 3600000)

@@ -45,20 +45,26 @@ var ListColaboradoresScoresService = /** @class */ (function () {
     ListColaboradoresScoresService.prototype.execute = function (_a) {
         var start = _a.start, limit = _a.limit, month = _a.month;
         return __awaiter(this, void 0, void 0, function () {
-            var pilarRepositories, start_date, end_date, scores;
+            var pilarRepositories, dataAtual, anoAtual, mesSeguinte, start_date, end_date, scores;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        pilarRepositories = typeorm_1.getCustomRepository(PilarRepositories_1.PilarRepositories);
-                        start_date = "2022-" + month + "-1";
-                        end_date = "2022-" + (month + 1) + "-1";
+                        pilarRepositories = (0, typeorm_1.getCustomRepository)(PilarRepositories_1.PilarRepositories);
+                        dataAtual = new Date();
+                        anoAtual = dataAtual.getFullYear();
+                        mesSeguinte = month + 1;
+                        if (month === 12) {
+                            mesSeguinte = 1;
+                        }
+                        start_date = "".concat(anoAtual, "-").concat(month, "-1");
+                        end_date = "".concat(mesSeguinte === 1 ? anoAtual + 1 : anoAtual, "-").concat(mesSeguinte, "-1");
                         return [4 /*yield*/, pilarRepositories
                                 .createQueryBuilder("pilares")
                                 .select("SUM(pilares.pontuacao)", "pontuacao_do_mes")
                                 .leftJoinAndSelect("pilares.colaboradorId", "colaborador")
                                 .groupBy("colaborador.id")
                                 .orderBy("pontuacao_do_mes", "DESC")
-                                .where("'[" + start_date + ", " + end_date + "]'::daterange @> pilares.created_at::date")
+                                .where("'[".concat(start_date, ", ").concat(end_date, "]'::daterange @> pilares.created_at::date"))
                                 // .cache(`rankingScore:${start}_${limit}`, 3600000)
                                 .offset(start)
                                 .limit(limit)

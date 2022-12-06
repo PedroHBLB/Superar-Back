@@ -12,9 +12,15 @@ interface IScoresRequest {
 class ListColaboradoresScoresService {
   async execute({ start, limit, month }: IScoresRequest) {
     const pilarRepositories = getCustomRepository(PilarRepositories);
-    //A cada ano que passar mudar o start_date e o end_date
-    const start_date = `2022-${month}-1`;
-    const end_date = `2022-${month + 1}-1`;
+    const dataAtual = new Date();
+    let anoAtual = dataAtual.getFullYear();
+    let mesSeguinte = month + 1;
+    if(month === 12){
+      mesSeguinte = 1
+    }
+
+    const start_date = `${anoAtual}-${month}-1`;
+    const end_date = `${mesSeguinte === 1 ? anoAtual + 1 : anoAtual}-${mesSeguinte}-1`;
 
     const scores = await pilarRepositories
       .createQueryBuilder("pilares")

@@ -46,13 +46,19 @@ var ShowInovacaoColaboradorScoreService = /** @class */ (function () {
     ShowInovacaoColaboradorScoreService.prototype.execute = function (_a) {
         var id = _a.id, month = _a.month;
         return __awaiter(this, void 0, void 0, function () {
-            var inovacaoRepositories, start_date, end_date, score;
+            var inovacaoRepositories, dataAtual, anoAtual, mesSeguinte, start_date, end_date, score;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         inovacaoRepositories = (0, typeorm_1.getCustomRepository)(InovacaoRepositories_1.InovacaoRepositories);
-                        start_date = "2022-".concat(month, "-1");
-                        end_date = "2022-".concat(month + 1, "-1");
+                        dataAtual = new Date();
+                        anoAtual = dataAtual.getFullYear();
+                        mesSeguinte = month + 1;
+                        if (month === 12) {
+                            mesSeguinte = 1;
+                        }
+                        start_date = "".concat(anoAtual, "-").concat(month, "-1");
+                        end_date = "".concat(mesSeguinte === 1 ? anoAtual + 1 : anoAtual, "-").concat(mesSeguinte, "-1");
                         return [4 /*yield*/, inovacaoRepositories
                                 .createQueryBuilder("inovacao")
                                 .leftJoinAndSelect("inovacao.pilarId", "pilar")
